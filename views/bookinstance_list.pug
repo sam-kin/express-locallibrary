@@ -1,0 +1,31 @@
+extends layout
+
+block main
+    h1 #{title}
+    if books.length > 0
+        if bookinstances.length > 0
+            p Here is the list of all books and their copies in the library:
+
+            ul.list
+                each book in books
+                    li.list-item Book: #{book.title}.</br></br>Copies of this book represented by ID: 
+                    ul.list
+                        -let bookIn = []
+                        each bookinstance in bookinstances
+                            if bookinstance.book.toString().indexOf(book._id.toString())>-1
+                                -bookIn.push(bookinstance)
+                                li.list-item 
+                                    p
+                                        a(href=bookinstance.url) #{bookinstance.id} 
+                        if bookIn.length === 0 
+                            p There is no copy of this book in the library.
+        else
+            p There are not copies of books in the library.
+        .control-container
+            a.btn.btn-primary(href="/catalog/bookinstance/create") Create a book copy
+    else
+        p There are not books in the library.
+        .control-container
+            a.btn.btn-primary(href="/catalog/book/create") Create a book
+
+

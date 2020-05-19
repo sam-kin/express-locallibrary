@@ -1,0 +1,19 @@
+extends layout
+
+block main
+    h1 #{title}
+
+    if genres.length > 0
+        p Here are the genres available in the library
+
+        ul.list
+            each genre in genres
+                li.list-item
+                    a(href=genre.url) #{genre.name}
+
+    else
+        p There are not genres in the library
+
+    .control-container
+        a.btn.btn-primary(href="/catalog/genre/create") Create genre
+    

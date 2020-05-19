@@ -1,0 +1,23 @@
+extends layout
+
+block main
+    if message
+        p #{message}
+        a(href="/catalog/genre") Genre list
+
+    else
+
+        h1 #{title}
+
+        p Do you really want to delete this genre ?
+        if books
+            p Note that, by deleting this genre you'll effectively delete thes books too :
+
+            ul.list
+                each book in books
+                    li.list-item
+                        a(href=book.url) #{book.title}
+
+        .control-container
+            form(action="", method="post")
+                button.btn.btn-danger(type="submit") Confirm

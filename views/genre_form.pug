@@ -1,0 +1,17 @@
+extends layout
+
+block main
+    h1 #{title}
+
+    form(action="", method="post")
+        .form-group
+            label(for="name")
+            input#name.form-control(type="text", name="name", placeholder='Genre name', value=(genre===undefined)? '':genre.name)
+
+            button.btn.btn-primary(type="submit") Submit
+
+    if errors
+        h3 Errors:
+            ul.list
+                each error in errors
+                    li.list-item #{error.msg}

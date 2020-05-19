@@ -1,0 +1,143 @@
+body {
+  padding: 0px;
+  margin: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+*{box-sizing: border-box;}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.topbar {
+  position: static;
+  z-index: 2;
+  width: 100%;
+  color: rgb(212, 212, 212);
+  background-color: rgb(58, 58, 58);
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: inherit;
+  padding: .3em .5em;
+  margin: 0;
+  border-bottom: 1px solid #888;
+}
+
+.menu { 
+  background-color: inherit;
+  display: none;
+  position: absolute;
+  top: 55px;
+  bottom: 0;
+  left: 0;
+  width: 250px;
+}
+.menu-item {
+  display: block;
+  padding: .7em .4em;
+  margin: 0;
+  text-decoration: none;
+  
+}
+
+.menu-item:hover, .btn-close:hover {
+  background-color: rgb(202, 202, 202);
+  color: #666;
+}
+
+.btn-close {
+  display: block;
+  border: none;
+  outline: none;
+  color: inherit;
+  font-size: inherit;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.main-content {
+  margin-left: 20px;
+}
+
+.form-control {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #aaa;
+  padding: .5em;
+  margin: 10px 0;
+}
+
+.btn {
+  display: block;
+  padding: .5em 1em;
+  border-radius: 10px;
+  background-color: white;
+  margin: 10px;
+  outline: none;
+  border: none;
+  cursor: default;
+}
+
+.btn-primary  {
+  border: 1.5px solid #aaa;
+}
+
+.btn-primary:hover {
+  background-color: rgb(202, 198, 198);
+}
+
+.btn-danger {
+  padding: .7em 1.2em;
+  background-color: rgb(240, 154, 154);
+}
+
+.btn-danger:hover {
+  background-color: rgb(255, 106, 106);
+}
+
+.control-container {
+  display: flex;
+  border-top: 1px solid #bbb;
+  margin: 20px 0 10px 0;
+}
+
+@media (min-width: 800px) {
+  .topbar {
+    position: static;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+  }
+  .title {
+    flex: auto auto 100px;
+  }
+  .menu {
+    display: flex;
+    position: static;
+    margin: 0 30px;
+    flex: 1 1 auto;
+  }
+  .menu-item {
+    display: inline-block;
+    line-height: 3;
+    width: 25%;
+    padding: .5em 1.3em;
+    text-align: center;
+    flex: 1 1 auto;
+  }
+  .controle {
+    display: none;
+  }
+  .btn-close {
+    display: none;
+  }
+  
+}

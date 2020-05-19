@@ -1,0 +1,33 @@
+extends layout
+
+block main
+    h1 #{title}
+
+    form(action="", method="post")
+        .form-group
+            label(for="title") Title:
+            input.form-control#title(type="text", name="title", required=true, placeholder="Book title", value=(book===undefined)? '':book.title)
+        .form-group
+            label(for="author") Author:
+            select#author.form-control(type="select", name="author", required=true)
+                each author in authors
+                    -console.log(selectedAuthor)
+                    option(value=author._id, selected=(selectedAuthor === undefined || selectedAuthor === null)? (book===undefined)? false : (author._id === book.author.toString())? 'selected':false : (selectedAuthor._id.toString() === author._id.toString())? 'selected':false) #{author.name}
+        .form-group
+            label(for="isbn") Isbn:
+            input#isbn.form-control(type="text", name="isbn", required=true placeholder='Book\'s Isbn', value=(book===undefined)? '': book.isbn)
+        .form-group
+            label(for="summary") Summary
+            textarea#summary.form-control(name="summary", rows="3") #{value=(book === undefined)? '': book.summary}
+        .form-group
+            each genre in genres
+                input.form-check(type="checkbox", name='genre', id=genre.name, value=genre._id, checked=genre.checked)
+                label(for=genre.name) #{genre.name}
+
+        button.btn.btn-primary(type="submit") Submit
+
+    if errors
+            h3 Errors:
+            ul.errors
+                each error in errors
+                    li #{error.msg}

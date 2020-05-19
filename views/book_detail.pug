@@ -1,0 +1,30 @@
+extends layout
+
+block main
+
+    if book
+        h1 #{book.title}
+
+        p About the book: #{book.summary}
+
+        p Author: 
+            a(href=book.author.url) #{book.author.name}
+        p isbn : #{book.isbn}
+        p Genre: 
+            each genre in book.genre
+                a(href=genre.url) #{genre.name},
+        if bookinstances.length > 0
+            p Copies of the book:
+            ul.list
+                for bookinstance in bookinstances
+                    li.list-item
+                        a(href=bookinstance.url) #{bookinstance.id}
+
+        .control-container
+            a.btn.btn-danger(href="/catalog/book/delete/" + book.id) Delete
+            a.btn.btn-primary(href="/catalog/book/update/" + book.id) Update
+    
+    if errors 
+        |Errors:
+        for error in errors
+            p #{error.msg}

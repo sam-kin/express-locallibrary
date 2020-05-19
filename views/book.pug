@@ -1,0 +1,16 @@
+extends layout
+
+block main
+    h1 List of all available books in the library
+
+    p In the library we have these books:
+    ul.list
+        each book in books
+            li.book-list-item
+                a(href=book.url) #{book.title}
+        else
+            p There are no books in the library.
+
+    .control-container
+        a.btn.btn-primary(href="/catalog/book/create") New Book
+    

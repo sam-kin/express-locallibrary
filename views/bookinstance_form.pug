@@ -1,0 +1,24 @@
+extends layout
+
+block main
+    h1 #{title}
+
+    form(action="", method="post")
+        .form-groupe
+            label(for="book") Book:
+            select#book.form-control(type="select", name="book", placeholder="book")
+                each book in books
+                    option(value=book._id, selected=(bookinstance===undefined)? false:(bookinstance.book.toString().indexOf(book._id.toString())>-1)? 'selected':false) #{book.title}
+        .form-group
+            label(for="imprint") Imprint
+            input#imprint.form-control(type="text", name="imprint", value=(bookinstance===undefined)? '':bookinstance.imprint, placeholder='Book copy\'s imprint')
+        .form-group
+            label(for="status") Status:
+            select#status.form-control(name="status", placeholder='Select a status')
+                each status in ['Available', 'Maintenance', 'Loaned', 'Reserved'].sort((a, b) => {let sA=a; let sB=b; return (sA>sB)? 1:(sA<sB)? -1:0})
+                    option(value=status, selected=(bookinstance===undefined)? false:(bookinstance.status===status)? 'selected':false) #{status}
+        .form-group
+            label(for="due_back") Date of due:
+            input#due_back.form-control(type="date", name="due_back", value=(bookinstance===undefined)? '':(bookinstance.formated_due_back==='Invalid date')? '':bookinstance.formated_due_back)
+        
+        button.btn.btn-primary(type="submit") Submit

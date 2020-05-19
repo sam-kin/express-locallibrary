@@ -1,0 +1,14 @@
+extends layout
+
+block main
+    if message
+        p #{message}
+        a(href="/catalog/bookinstance") Go to bookinstance list
+    else
+        h1 #{title}
+
+        p Do you really want to delete this copy of the book #{bookinstance.book.title}?
+
+        .control-container
+            form(action="", method="post")
+                button.btn.btn-danger(type="submit") Confirm

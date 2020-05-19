@@ -1,0 +1,25 @@
+{
+  "name": "locallibrary",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "async": "^3.2.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-validator": "^6.4.1",
+    "http-errors": "~1.6.3",
+    "moment": "^2.25.3",
+    "mongoose": "^5.9.14",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.4",
+    "pug": "2.0.0-beta11"
+  },
+  "description": "A node apllication for library",
+  "main": "./bin/www",
+  "author": "Sam",
+  "license": "MIT"
+}

@@ -1,0 +1,21 @@
+extends layout
+
+block main
+    h1 #{title}
+
+    if books.legth > 0
+        h3 Some books:
+        
+        ul.list
+            each book in books
+                li.list-item
+                    a(href=book.url) #{book.title}
+    
+    else
+        p This genre doesn't have any book. Click to 
+
+            a(href="/catalog/book/create/genre/" + genre._id) create book.
+
+    .control-container
+        a.btn.btn-danger(href="/catalog/genre/delete/" + genre._id) Delete
+        a.btn.btn-primary(href="/catalog/genre/update/" + genre._id) Update

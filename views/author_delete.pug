@@ -1,0 +1,15 @@
+extends layout
+
+block main 
+    if author
+        h1 #{title}
+
+        p Do you really want to delete this author ?
+
+        form(action="", method="post")
+            p Note that if you delete the author you delete his boks too
+
+            button.btn.btn-primary(type="submit") Submit
+    else if message
+        p #{message} </br>
+        a(href="/catalog/author") Go to author list

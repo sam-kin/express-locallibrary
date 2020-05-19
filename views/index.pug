@@ -1,0 +1,12 @@
+extends layout
+
+block main
+  h1 #{title}
+
+  p Here is our catalog
+
+  ul.list-content
+    li.content-item Books: #{count.book_count}
+    li.content-item Author: #{count.author_count}
+    li.content-item Genre: #{count.genre_count}
+    li.content-item Bookinstsnces: #{count.bookinstance_count}

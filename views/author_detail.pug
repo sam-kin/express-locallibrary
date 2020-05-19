@@ -1,0 +1,26 @@
+extends layout
+
+block main
+    if author
+        h1 #{author.name}
+
+        p #{author.formated_date_of_birth} - #{author.formated_date_of_death}
+
+        h3 Books:
+
+        if books.length > 0
+            ul.list
+                each book in books
+                    li.list-item
+                        a(href=book.url) #{book.title}
+        else
+            p He deosn't have any book </br>
+
+            a(href="/catalog/book/create/author/" + author.id) Go and create one
+
+        .control-container
+            a.btn.btn-danger(href="/catalog/author/delete/" + author.id) Delete
+            a.btn.btn-primary(href="/catalog/author/update/" + author.id) Update
+
+    else
+        p There might be an error. Author not found.

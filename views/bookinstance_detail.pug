@@ -1,0 +1,21 @@
+extends layout
+
+block main
+    h1 #{title}
+
+    p Copy ID :
+        a(href=bookinstance.url) #{bookinstance._id}
+
+    p Book: 
+        a(href=bookinstance.book.url) #{bookinstance.book.title}
+
+    p Imprint: #{bookinstance.imprint}
+
+    p Status: #{bookinstance.status}
+
+    if bookinstance.formate_due_back != 'Invalid date' 
+    p Date of due: #{bookinstance.formated_due_back}
+
+    .control-container
+        a.btn.btn-danger(href="/catalog/bookinstance/delete/" + bookinstance._id) Delete
+        a.btn.btn-primary(href="/catalog/bookinstance/update/" + bookinstance._id) Update
